@@ -228,3 +228,17 @@ footer {
     padding-bottom: 4px; /* Gives space between the text and the line */
 }
 
+.map-section {
+  background: var(--cream-dark);
+  padding: 5rem 2rem;
+}
+
+.map-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  height: 420px;
+  border: 3px solid rgba(92, 42, 26, 0.15);
+  box-shadow: 0 12px 40px rgba(92, 42, 26, 0.1);
+  overflow: hidden;
+}
+

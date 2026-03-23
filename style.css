@@ -1,0 +1,244 @@
+/* --- Base Variables & Setup --- */
+:root {
+    --bg-dark: #09090b; /* Deep dark gray/black */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --neon-cyan: #00f0ff;
+    --neon-purple: #8a2be2;
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- Beautiful Ambient Background Glows --- */
+.bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.5;
+}
+.glow-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--neon-purple), transparent 70%);
+}
+.glow-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, var(--neon-cyan), transparent 70%);
+}
+
+/* --- Glassmorphism Navigation --- */
+.glass-nav {
+    background: rgba(9, 9, 11, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1.2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--neon-cyan);
+}
+
+/* --- Glass Cards (Social Media Style) --- */
+.container {
+    flex: 1;
+    width: 90%;
+    max-width: 800px;
+    margin: 4rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(138, 43, 226, 0.15);
+}
+
+/* --- Social Tags & Typography --- */
+.card-header {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--neon-cyan);
+    font-family: 'Space Mono', monospace;
+}
+
+.gradient-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* --- Glitch Footer --- */
+footer {
+    border-top: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 2.5rem;
+    margin-top: auto;
+}
+
+.glitch {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    animation: flicker 4s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    color: var(--neon-cyan);
+    z-index: -1;
+    animation: glitch-anim-1 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    color: #ff0055;
+    z-index: -2;
+    animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; transform: skew(0deg); }
+    20%, 24%, 55% { opacity: 0.8; transform: skew(-2deg) translateX(-1px); text-shadow: 2px 0 #ff0055, -2px 0 var(--neon-cyan); }
+}
+@keyframes glitch-anim-1 {
+    0%, 100% { clip-path: inset(20% 0 80% 0); transform: translate(0); }
+    20% { clip-path: inset(60% 0 10% 0); transform: translate(-2px, 1px); }
+    40% { clip-path: inset(40% 0 50% 0); transform: translate(2px, -1px); }
+    60% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, 2px); }
+    80% { clip-path: inset(10% 0 70% 0); transform: translate(2px, -2px); }
+}
+@keyframes glitch-anim-2 {
+    0%, 100% { clip-path: inset(10% 0 60% 0); transform: translate(0); }
+    20% { clip-path: inset(30% 0 20% 0); transform: translate(2px, -1px); }
+    40% { clip-path: inset(70% 0 10% 0); transform: translate(-2px, 2px); }
+    60% { clip-path: inset(20% 0 50% 0); transform: translate(2px, 1px); }
+    80% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, -1px); }
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 600px) {
+    .glass-nav { flex-direction: column; gap: 1rem; }
+    .glass-card { padding: 1.5rem; }
+    .gradient-text { font-size: 2rem; }
+}
+
+/* --- Active Page Indicator --- */
+.nav-links a.active {
+    color: var(--neon-cyan);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    border-bottom: 2px solid var(--neon-cyan);
+    padding-bottom: 4px; /* Gives space between the text and the line */
+}
+
+.map-section {
+  background: var(--cream-dark);
+  padding: 5rem 2rem;
+}
+
+.map-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  height: 420px;
+  border: 3px solid rgba(92, 42, 26, 0.15);
+  box-shadow: 0 12px 40px rgba(92, 42, 26, 0.1);
+  overflow: hidden;
+}
+

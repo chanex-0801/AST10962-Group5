@@ -242,3 +242,137 @@ footer {
   overflow: hidden;
 }
 
+
+/* ── Back to Top Button ── */
+#backToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
+  background: linear-gradient(135deg, #6b6bff, #9B59B6);
+  color: #FFD700;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+#backToTop:hover {
+  background: linear-gradient(135deg, #FFD700, #4104db);
+  transform: translateY(-1px) scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+}
+
+
+
+.contact-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2.page-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+/* 標籤樣式 */
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.required {
+    color: #ff4d4f; /* 紅色星號 */
+    margin-left: 3px;
+}
+
+/* 輸入框及下拉選單共通樣式 */
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f5f6f8; /* 淺灰色背景 */
+    font-size: 14px;
+    box-sizing: border-box;
+    color: #333;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #a0a0a0;
+}
+
+/* 下拉選單特別處理 */
+select {
+    appearance: none; /* 隱藏原生箭頭 */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* 電郵驗證按鈕 */
+.verify-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.verify-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* 底部提交按鈕 */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #ffffff;
+    color: #666;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #333333;
+}
